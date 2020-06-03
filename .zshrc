@@ -9,7 +9,7 @@ fi
 export PATH=$HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/lucatrazzi/.oh-my-zsh"
+export ZSH="/home/edar/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -122,6 +122,8 @@ alias v='f(){ amixer -q sset Master toggle;  unset -f f; }; f'
 
 alias tree='broot'
 alias grep='rg'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 
 # sets nvim as default editor
 export EDITOR=/usr/bin/nvim
@@ -136,5 +138,7 @@ compctl -W $REPOSITORIES_FOLDER -/ prj
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# zsh-bd
+. ~/.oh-my-zsh/custom/plugins/bd/bd.zsh
 # zsh-bd
 . ~/.oh-my-zsh/custom/plugins/bd/bd.zsh
