@@ -47,14 +47,9 @@ bindsym $altMod+$mod+space exec morc_menu
 
 # Apps Launched with <SUPER> + <KEYPAD 1-9>
 bindsym $mod+$altMod+1 exec $myTerm -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss http://www.distrowatch.com
-bindsym $mod+$altMod+2 exec $myTerm -e sh ./scripts/googler-script.sh
-bindsym $mod+$altMod+3 exec $myTerm -e newsboat
-bindsym $mod+$altMod+4 exec $myTerm -e rtv
-bindsym $mod+$altMod+5 exec $myTerm -e neomutt
-bindsym $mod+$altMod+6 exec $myTerm -e twitch-curses
-bindsym $mod+$altMod+7 exec $myTerm -e sh ./scripts/haxor-news.sh
-bindsym $mod+$altMod+8 exec $myTerm -e toot curses
-bindsym $mod+$altMod+9 exec $myTerm -e sh ./scripts/tig-script.sh
+bindsym $mod+$altMod+2 exec $myTerm -e tuir
+bindsym $mod+$altMod+3 exec $myTerm -e neomutt
+bindsym $mod+$altMod+4 exec $myTerm -e sh ./scripts/tig-script.sh
 
 # Apps Launched with <SUPER> + <SHIFT> + <KEYPAD 1-9>
 bindsym $mod+Shift+KP_1 exec $myTerm -e vifm

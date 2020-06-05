@@ -85,6 +85,8 @@ function mainDialog() {
 
   echo Purged temp folder
 
+  read  -n 1 -p "Press any key to continue" mainmenuinput
+
   askRestart
 }
 

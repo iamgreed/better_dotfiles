@@ -24,6 +24,9 @@ function askGeneralDialog() {
         15 "Font awesome 5.12.1" on
         16 "Rust" off
         17 "Lynx" on
+        18 "Rtv" off
+        19 "Tuid" on
+        20 "neomutt" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -100,11 +103,49 @@ function installGeneralChoice() {
             echo PRE INSTALLING LYNX
             installLynx
             ;;
-
+        18)
+            echo PRE INSTALLING RTV
+            installRtv
+            ;;
+        19)
+            echo PRE INSTALLING TUIR
+            installTuir
+            ;;
+        20)
+            echo PRe INSTALLING NEOMUTT
+            installNeomutt
+            ;;
         esac
 
     done
 
+}
+
+function installTuir() {
+    if ! [ -x "$(command -v tuir)" ]; then
+        echo INSTALLING TUIR
+        yay -S --noconfirm tuir
+    else
+        echo TUIR ALREADY INSTALLED
+    fi
+}
+
+function installNeomutt() {
+    if ! [ -x "$(command -v neomutt)" ]; then
+        echo INSTALLING NEOMUTT
+        yay -S --noconfirm neomutt
+    else
+        echo NEOMUTT ALREADY INSTALLED
+    fi
+}
+
+function installRtv() {
+    if ! [ -x "$(command -v rtv)" ]; then
+        echo INSTALLING RTV
+        yay -S --noconfirm rtv
+    else
+        echo RTV ALREADY INSTALLED
+    fi
 }
 
 function installLynx() {
@@ -114,7 +155,6 @@ function installLynx() {
     else
         echo LYNX ALREADY INSTALLED
     fi
-
 }
 
 function installGit() {
