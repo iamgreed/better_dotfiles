@@ -13,19 +13,4 @@ installSnap
 # install dialog if needed
 installDialog
 
-# setup variables
-TEMP_DIR=~/setup-temp
-
-mkdir -p $TEMP_DIR
-mkdir -p ~/.config/autostart
-
-#move to temp folder
-cd $TEMP_DIR
-
-askDialog
-
-installGeneralChoice
-
-installCodeChoice
-
-installI3Choice
+mainDialog

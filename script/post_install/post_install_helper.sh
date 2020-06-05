@@ -61,3 +61,52 @@ function installSnap() {
     echo SNAP ALREADY INSTALLED
   fi
 }
+
+function mainDialog() {
+  clear
+  # setup variables
+  TEMP_DIR=~/setup-temp
+
+  mkdir -p $TEMP_DIR
+  mkdir -p ~/.config/autostart
+
+  #move to temp folder
+  cd $TEMP_DIR
+
+  askDialog
+
+  installGeneralChoice
+
+  installCodeChoice
+
+  installI3Choice
+
+  rm -rf $TEMP_DIR
+
+  echo Purged temp folder
+
+  askRestart
+}
+
+function askRestart() {
+  dialog --title "Restart wizard?" \
+    --backtitle "Do you want to restart the installation wizard?" \
+    --yesno "Are you sure you want to restart the installation wizard?" 7 60
+
+  # Get exit status
+  # 0 means user hit [yes] button.
+  # 1 means user hit [no] button.
+  # 255 means user hit [Esc] key.
+  response=$?
+  case $response in
+  0) mainDialog ;;
+  1)
+    clear
+    echo "gg"
+    ;;
+  255)
+    clear
+    echo "all done"
+    ;;
+  esac
+}

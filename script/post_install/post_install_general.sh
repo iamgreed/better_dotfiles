@@ -7,9 +7,9 @@ function askGeneralDialog() {
     cmd=(dialog --separate-output --checklist "Please select general library to be installed:" 22 76 16)
 
     options=(
-        1 "Git" off
+        1 "Git" on
         2 "Lsd" off
-        3 "Oh my zsh" off
+        3 "Oh my zsh" on
         4 "bd" off
         5 "dot net sdk" off
         6 "Node" off
@@ -19,10 +19,11 @@ function askGeneralDialog() {
         10 "Emacs" off
         11 "Dustn" off
         12 "Kitty" off
-        13 "Firacode 2" off
-        14 "Furacode 2.0.0" off
-        15 "Font awesome 5.12.1" off
+        13 "Firacode 2" on
+        14 "Furacode 2.0.0" on
+        15 "Font awesome 5.12.1" on
         16 "Rust" off
+        17 "Lynx" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -95,10 +96,24 @@ function installGeneralChoice() {
             echo PRE INSTALLING RUST
             installRust
             ;;
+        17)
+            echo PRE INSTALLING LYNX
+            installLynx
+            ;;
 
         esac
 
     done
+
+}
+
+function installLynx() {
+    if ! [ -x "$(command -v lynx)" ]; then
+        echo INSTALLING LYNX
+        yay -S --noconfirm lynx
+    else
+        echo LYNX ALREADY INSTALLED
+    fi
 
 }
 
@@ -271,7 +286,7 @@ function installKitty() {
     fi
 }
 
-function installRust(){
+function installRust() {
     if ! [ -x "$(command -v rust)" ]; then
         echo INSTALLING RUST
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
