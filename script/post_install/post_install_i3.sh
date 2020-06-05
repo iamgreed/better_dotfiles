@@ -13,6 +13,7 @@ function askI3Dialog() {
         8 "rofi greenclip" off
         9 "fhe" off
         10 "i3 battery popup git" off
+        11 "morc_menu" off
     )
     i3Choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -61,10 +62,22 @@ function installI3Choice() {
             echo PRE INSTALL I3 BATTERY POPUP GIT
             installI3BatteryPopupGit
             ;;
-
+        11)
+            echo PRE INSTALL MORC_MENU
+            installMorcMenu
+            ;;
         esac
 
     done
+}
+
+function installMorcMenu() {
+    if ! [ -x "$(command -v morc_menu)" ]; then
+        echo INSTALLING MORC_MENU
+        yay -Sy --noconfirm morc_menu
+    else
+        echo MORC_MENU ALREADY INSTALLED
+    fi
 }
 
 function installI3() {

@@ -13,6 +13,7 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
+set $altMod Mod1
 
 # Configure border style <normal|pixel>
 default_border pixel 1
@@ -39,10 +40,10 @@ bindsym $mod+Return exec $myTerm
 bindsym $mod+Shift+c kill
 
 # start program launcher
-bindsym $mod+KP_Insert exec --no-startup-id rofi -show run
+bindsym $altMod+space exec rofi -show run
 
 # launch categorized menu
-bindsym $mod+' exec --no-startup-id morc_menu
+bindsym $mod+' exec morc_menu
 
 # Apps Launched with <SUPER> + <KEYPAD 1-9>
 bindsym $mod+KP_End exec $myTerm -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss http://www.distrowatch.com
