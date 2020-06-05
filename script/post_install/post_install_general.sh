@@ -27,6 +27,7 @@ function askGeneralDialog() {
         18 "Rtv" off
         19 "Tuid" on
         20 "neomutt" on
+        21 "vifm" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -112,13 +113,26 @@ function installGeneralChoice() {
             installTuir
             ;;
         20)
-            echo PRe INSTALLING NEOMUTT
+            echo PRE INSTALLING NEOMUTT
             installNeomutt
+            ;;
+        21)
+            echo PRE INSTALLING VIFM
+            installVifm
             ;;
         esac
 
     done
 
+}
+
+function installVifm(){
+        if ! [ -x "$(command -v vifm)" ]; then
+        echo INSTALLING VIFM
+        yay -S --noconfirm vifm
+    else
+        echo vifm ALREADY INSTALLED
+    fi
 }
 
 function installTuir() {

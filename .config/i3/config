@@ -45,22 +45,20 @@ bindsym $altMod+space exec rofi -show run
 # launch categorized menu
 bindsym $altMod+$mod+space exec morc_menu
 
-# Apps Launched with <SUPER> + <KEYPAD 1-9>
-bindsym $mod+$altMod+1 exec $myTerm -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss http://www.distrowatch.com
+# Apps Launched with <SUPER> + <ALT> + <1-9>bindsym $mod+$altMod+1 exec $myTerm -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss http://www.distrowatch.com
 bindsym $mod+$altMod+2 exec $myTerm -e tuir
 bindsym $mod+$altMod+3 exec $myTerm -e neomutt
-bindsym $mod+$altMod+4 exec $myTerm -e sh ./scripts/tig-script.sh
 
-# Apps Launched with <SUPER> + <SHIFT> + <KEYPAD 1-9>
-bindsym $mod+Shift+KP_1 exec $myTerm -e vifm
-bindsym $mod+Shift+KP_2 exec $myTerm -e joplin
-bindsym $mod+Shift+KP_3 exec $myTerm -e cmus
-bindsym $mod+Shift+KP_4 exec $myTerm -e irssi
-bindsym $mod+Shift+KP_5 exec $myTerm -e rtorrent
-bindsym $mod+Shift+KP_6 exec $myTerm -e youtube-viewer
-bindsym $mod+Shift+KP_7 exec $myTerm -e ncpamixer
-bindsym $mod+Shift+KP_8 exec $myTerm -e calcurse
-bindsym $mod+Shift+KP_9 exec $myTerm -e vim /home/dt/.i3/config
+# Apps Launched with <MEH> + <1-9>
+bindsym $altMod+Ctrl+Shift+1 exec $myTerm -e vifm
+bindsym $mod+$altMod+Shift+2 exec $myTerm -e joplin
+bindsym $mod+$altMod+Shift+3 exec $myTerm -e cmus
+bindsym $mod+$altMod+Shift+4 exec $myTerm -e irssi
+bindsym $mod+$altMod+Shift+5 exec $myTerm -e rtorrent
+bindsym $mod+$altMod+Shift+6 exec $myTerm -e youtube-viewer
+bindsym $mod+$altMod+Shift+7 exec $myTerm -e ncpamixer
+bindsym $mod+$altMod+Shift+8 exec $myTerm -e calcurse
+bindsym $mod+$altMod+Shift+9 exec $myTerm -e vim /home/dt/.i3/config
 
 # Apps Launched with <SUPER> + <CTRL> + <KEYPAD 1-9>
 bindsym $mod+Ctrl+KP_End exec $myTerm -e htop
