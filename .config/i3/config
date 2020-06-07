@@ -51,14 +51,12 @@ bindsym $mod+$altMod+3 exec $myTerm -e neomutt
 
 # Apps Launched with <MEH> + <1-9>
 bindsym $altMod+Ctrl+Shift+1 exec $myTerm -e vifm
-bindsym $mod+$altMod+Shift+2 exec $myTerm -e joplin
-bindsym $mod+$altMod+Shift+3 exec $myTerm -e cmus
-bindsym $mod+$altMod+Shift+4 exec $myTerm -e irssi
-bindsym $mod+$altMod+Shift+5 exec $myTerm -e rtorrent
-bindsym $mod+$altMod+Shift+6 exec $myTerm -e youtube-viewer
-bindsym $mod+$altMod+Shift+7 exec $myTerm -e ncpamixer
-bindsym $mod+$altMod+Shift+8 exec $myTerm -e calcurse
-bindsym $mod+$altMod+Shift+9 exec $myTerm -e vim /home/dt/.i3/config
+bindsym $altMod+Ctrl+Shift+2 exec $myTerm -e joplin
+bindsym $altMod+Ctrl+Shift+3 exec $myTerm -e cmus
+bindsym $altMod+Ctrl+Shift+4 exec $myTerm -e youtube-viewer
+bindsym $altMod+Ctrl+Shift+7 exec $myTerm -e ncpamixer
+bindsym $altMod+Ctrl+Shift+8 exec $myTerm -e calcurse
+bindsym $altMod+Ctrl+Shift+9 exec $myTerm -e vim /home/dt/.i3/config
 
 # Apps Launched with <SUPER> + <CTRL> + <KEYPAD 1-9>
 bindsym $mod+Ctrl+KP_End exec $myTerm -e htop

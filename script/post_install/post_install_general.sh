@@ -28,6 +28,9 @@ function askGeneralDialog() {
         19 "Tuid" on
         20 "neomutt" on
         21 "vifm" on
+        22 "joplin" on
+        23 "cmus" on
+        24 "youtube-viewer" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -120,18 +123,56 @@ function installGeneralChoice() {
             echo PRE INSTALLING VIFM
             installVifm
             ;;
+        22)
+            echo PRE INSTALLING JOPLIN
+            installJoplin
+            ;;
+        23)
+            echo PRE INSTALLING CMUS
+            installCmus
+            ;;
+        24)
+            echo PRE INSTALLING YOUTUBE VIEWER
+            installYoutubeViewer
+            ;;
         esac
 
     done
 
 }
 
-function installVifm(){
-        if ! [ -x "$(command -v vifm)" ]; then
+function installYoutubeViewer(){
+if ! [ -x "$(command -v youtube-viewer)" ]; then
+        echo INSTALLING YOUTUBE VIEWER
+        yay -S --noconfirm youtube-viewer
+    else
+        echo YOUTUBE VIEWER ALREADY INSTALLED
+    fi
+}
+function installCmus() {
+    if ! [ -x "$(command -v cmus)" ]; then
+        echo INSTALLING CMUS
+        yay -S --noconfirm cmus
+    else
+        echo CMUS ALREADY INSTALLED
+    fi
+}
+
+function installJoplin() {
+    if ! [ -x "$(command -v joplin)" ]; then
+        echo INSTALLING JOPLIN
+        yay -S --noconfirm joplin
+    else
+        echo JOPLIN ALREADY INSTALLED
+    fi
+}
+
+function installVifm() {
+    if ! [ -x "$(command -v vifm)" ]; then
         echo INSTALLING VIFM
         yay -S --noconfirm vifm
     else
-        echo vifm ALREADY INSTALLED
+        echo JOPLINPPY ALREADY INSTALLED
     fi
 }
 
