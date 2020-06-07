@@ -12,7 +12,7 @@ function askGeneralDialog() {
         3 "Oh my zsh" on
         4 "bd" off
         5 "dot net sdk" off
-        6 "Node" off
+        6 "NVM" off
         7 "Yarn" off
         8 "Docker" off
         9 "Docker compose" off
@@ -31,6 +31,7 @@ function askGeneralDialog() {
         22 "joplin" on
         23 "cmus" on
         24 "youtube-viewer" on
+        25 "ncpamixer" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -41,7 +42,7 @@ function installGeneralChoice() {
         case $genealChoice in
         1)
             echo PRE INSTALLING GIT
-            installGit
+            installWYay git
             ;;
         2)
             echo PRE INSTALLING LSD
@@ -57,15 +58,15 @@ function installGeneralChoice() {
             ;;
         5)
             echo PRE INSTALLING DOT NET SDK
-            installDotnetSdk
+            installWYay dotnet-runtime
             ;;
         6)
-            echo PRE INSTALLING NODE
-            installNode
+            echo PRE INSTALLING NVM
+            installWYay nvm
             ;;
         7)
             echo PRE INSTALLING YARN
-            installYarn
+            installWYay yarn
             ;;
         8)
             echo PRE INSTALLING DOCKER
@@ -73,7 +74,7 @@ function installGeneralChoice() {
             ;;
         9)
             echo PRE INSTALLING DOCKER COMPOSE
-            installDockerCompose
+            installWYay docker-compose
             ;;
         10)
             echo PRE INSTALLING EMACS
@@ -81,11 +82,11 @@ function installGeneralChoice() {
             ;;
         11)
             echo PRE INSTALLING DUNST
-            installDunst
+            installWYay dunst
             ;;
         12)
             echo PRE INSTALLING KITTY
-            installKitty
+            installWYay kitty
             ;;
         13)
             echo PRE INSTALLING FIRACODE
@@ -105,35 +106,39 @@ function installGeneralChoice() {
             ;;
         17)
             echo PRE INSTALLING LYNX
-            installLynx
+            installWYay lynx
             ;;
         18)
             echo PRE INSTALLING RTV
-            installRtv
+            installWYay rtv
             ;;
         19)
             echo PRE INSTALLING TUIR
-            installTuir
+            installWYay tuir
             ;;
         20)
             echo PRE INSTALLING NEOMUTT
-            installNeomutt
+            installWYay neomutt
             ;;
         21)
             echo PRE INSTALLING VIFM
-            installVifm
+            installWYay vifm
             ;;
         22)
             echo PRE INSTALLING JOPLIN
-            installJoplin
+            installWYay joplin
             ;;
         23)
             echo PRE INSTALLING CMUS
-            installCmus
+            installWYay cmus
             ;;
         24)
             echo PRE INSTALLING YOUTUBE VIEWER
-            installYoutubeViewer
+            installWYay youtube-viewer
+            ;;
+        25)
+            echo PRE INSTALLING NCPAMIXER
+            installNcpamixer
             ;;
         esac
 
@@ -141,85 +146,14 @@ function installGeneralChoice() {
 
 }
 
-function installYoutubeViewer(){
-if ! [ -x "$(command -v youtube-viewer)" ]; then
-        echo INSTALLING YOUTUBE VIEWER
-        yay -S --noconfirm youtube-viewer
+installWYay() {
+    local package="$1"
+    if ! [ -x "$(command -v $package)" ]; then
+        echo INSTALLING $package
+        yay -S --noconfirm $package
     else
-        echo YOUTUBE VIEWER ALREADY INSTALLED
+        echo $package ALREADY INSTALLED
     fi
-}
-function installCmus() {
-    if ! [ -x "$(command -v cmus)" ]; then
-        echo INSTALLING CMUS
-        yay -S --noconfirm cmus
-    else
-        echo CMUS ALREADY INSTALLED
-    fi
-}
-
-function installJoplin() {
-    if ! [ -x "$(command -v joplin)" ]; then
-        echo INSTALLING JOPLIN
-        yay -S --noconfirm joplin
-    else
-        echo JOPLIN ALREADY INSTALLED
-    fi
-}
-
-function installVifm() {
-    if ! [ -x "$(command -v vifm)" ]; then
-        echo INSTALLING VIFM
-        yay -S --noconfirm vifm
-    else
-        echo JOPLINPPY ALREADY INSTALLED
-    fi
-}
-
-function installTuir() {
-    if ! [ -x "$(command -v tuir)" ]; then
-        echo INSTALLING TUIR
-        yay -S --noconfirm tuir
-    else
-        echo TUIR ALREADY INSTALLED
-    fi
-}
-
-function installNeomutt() {
-    if ! [ -x "$(command -v neomutt)" ]; then
-        echo INSTALLING NEOMUTT
-        yay -S --noconfirm neomutt
-    else
-        echo NEOMUTT ALREADY INSTALLED
-    fi
-}
-
-function installRtv() {
-    if ! [ -x "$(command -v rtv)" ]; then
-        echo INSTALLING RTV
-        yay -S --noconfirm rtv
-    else
-        echo RTV ALREADY INSTALLED
-    fi
-}
-
-function installLynx() {
-    if ! [ -x "$(command -v lynx)" ]; then
-        echo INSTALLING LYNX
-        yay -S --noconfirm lynx
-    else
-        echo LYNX ALREADY INSTALLED
-    fi
-}
-
-function installGit() {
-    if ! [ -x "$(command -v git)" ]; then
-        echo INSTALLING GIT
-        yay -S --noconfirm git
-    else
-        echo GIT ALREADY INSTALLED
-    fi
-
 }
 
 function installLsd() {
@@ -228,6 +162,15 @@ function installLsd() {
         sudo snap install lsd --devmode
     else
         echo LSD ALREADY INSTALLED
+    fi
+}
+
+function installNcpamixer() {
+    if ! [ -x "$(command -v ncpamixer)" ]; then
+        echo INSTALLING NCPAMIXER
+        yay -S --noconfirm ncpamixer-git
+    else
+        echo NCPAMIXER ALREADY INSTALLED
     fi
 }
 
@@ -300,33 +243,6 @@ function installBd() {
     fi
 }
 
-function installDotnetSdk() {
-    if ! [ -x "$(command -v dotnet)" ]; then
-        echo INSTALLING DOTNETCORE SDK
-        yay -Sy --noconfirm dotnet-runtime
-    else
-        echo DOTNETCORE SDK ALREADY INSTALLED
-    fi
-}
-
-function installNode() {
-    if ! [ -x "$(command -v node)" ]; then
-        echo INSTALLING NODE
-        yay -Sy --noconfirm nvm
-    else
-        echo NODE ALREADY INSTALLED
-    fi
-}
-
-function installYarn() {
-    if ! [ -x "$(command -v yarn)" ]; then
-        echo INSTALLING YARN
-        yay -Sy --noconfirm yarn
-    else
-        echo YARN ALREADY INSTALLED
-    fi
-}
-
 function installDocker() {
     if ! [ -x "$(command -v docker)" ]; then
         echo INSTALLING DOCKER
@@ -341,15 +257,6 @@ function installDocker() {
     fi
 }
 
-function installDockerCompose() {
-    if ! [ -x "$(command -v docker-compose)" ]; then
-        echo INSTALLING DOCKER-COMPOSE
-        yay -Sy --noconfirm docker-compose
-    else
-        echo DOCKER-COMPOSE ALREADY INSTALLED
-    fi
-}
-
 function installEmacs() {
     if ! [ -x "$(command -v emacs)" ]; then
         echo INSTALLING EMACS
@@ -360,24 +267,6 @@ function installEmacs() {
         ~/.emacs.d/bin/doom install
     else
         echo EMACS ALREADY INSTALLED
-    fi
-}
-
-function installDunst() {
-    if ! [ -x "$(command -v dunst)" ]; then
-        echo INSTALLING DUNST
-        yay -Sy --noconfirm dunst
-    else
-        echo DUNST ALREADY INSTALLED
-    fi
-}
-
-function installKitty() {
-    if ! [ -x "$(command -v kitty)" ]; then
-        echo INSTALLING KITTY
-        yay -Sy --noconfirm kitty
-    else
-        echo KITTY ALREADY INSTALLED
     fi
 }
 
