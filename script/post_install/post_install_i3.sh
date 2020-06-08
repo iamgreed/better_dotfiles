@@ -19,6 +19,10 @@ function askI3Dialog() {
     clear
 }
 
+function clearI3Dialog(){
+    i3Choices='0';
+}
+
 function installI3Choice() {
     for i3Choice in $i3Choices; do
         case $i3Choice in

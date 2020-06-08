@@ -45,7 +45,8 @@ bindsym $altMod+space exec rofi -show run
 # launch categorized menu
 bindsym $altMod+$mod+space exec morc_menu
 
-# Apps Launched with <SUPER> + <ALT> + <1-9>bindsym $mod+$altMod+1 exec $myTerm -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss http://www.distrowatch.com
+# Apps Launched with <SUPER> + <ALT> + <1-9>
+bindsym $mod+$altMod+1 exec $myTerm -e lynx -cfg=~/.lynx.cfg -lss=~/.lynx.lss http://www.distrowatch.com
 bindsym $mod+$altMod+2 exec $myTerm -e tuir
 bindsym $mod+$altMod+3 exec $myTerm -e neomutt
 

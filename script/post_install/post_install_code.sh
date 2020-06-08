@@ -17,6 +17,10 @@ function askCodeDialog() {
     clear
 }
 
+function clearCodeDialog(){
+    codeChoices='0';
+}
+
 function installCodeChoice() {
     for codeChoice in $codeChoices; do
         case $codeChoice in
@@ -34,11 +38,11 @@ function installCodeChoice() {
             ;;
         4)
             echo PRE INSTALL TELEGRAM
-            installTelegram
+            installWYay telegram-desktop
             ;;
         5)
             echo PRE INSTALL TEAMS
-            installTeams
+            installWYay teams
             ;;
         6)
             echo PRE INSTALL KUBECTL
@@ -82,24 +86,6 @@ function installJetbrainsToolbox() {
         ./$JETBRAINS_TOOLBOX/jetbrains-toolbox
     else
         echo JETBRAINS TOOLBOX ALREADY INSTALLED
-    fi
-}
-
-function installTelegram() {
-    if ! [ -x "$(command -v telegram-desktop)" ]; then
-        echo INSTALLING TELEGRAM
-        yay -S --noconfirm telegram-desktop
-    else
-        echo TELEGRAM ALREADY INSTALLED
-    fi
-}
-
-function installTeams() {
-    if ! [ -x "$(command -v teams)" ]; then
-        echo INSTALLING TEAMS
-        yay -Sy --noconfirm teams
-    else
-        echo TEAMS ALREADY INSTALLED
     fi
 }
 

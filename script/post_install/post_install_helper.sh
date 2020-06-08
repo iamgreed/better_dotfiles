@@ -13,8 +13,12 @@ function askDialog() {
 
   options=(
     1 "General" on
-    2 "Code" off
-    3 "i3" off
+    2 "App1" off
+    3 "App2" off
+    4 "Dev" off
+    5 "Code" off
+    6 "i3" off
+    7 "terminal" off
   )
   categories=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
   clear
@@ -22,20 +26,38 @@ function askDialog() {
   for category in $categories; do
     case $category in
     1)
-      #geneal dialog*
       askGeneralDialog
       ;;
     2)
-      #code dialog*
-      askCodeDialog
+      askApp1Dialog
       ;;
     3)
-      #i3 dialog*
+      askApp2Dialog
+      ;;
+    4)
+      askDevelopmentDialog
+      ;;
+    5)
+      askCodeDialog
+      ;;
+    6)
       askI3Dialog
       ;;
-
+    7)
+      askTerminalDialog
+      ;;
     esac
   done
+}
+
+clearSelection() {
+  clearGeneralDialog
+  clearApp1Dialog
+  clearApp2Dialog
+  clearDevelopmentDialog
+  clearCodeDialog
+  clearI3Dialog
+  clearTerminalDialog
 }
 
 function installYay() {
@@ -62,6 +84,16 @@ function installSnap() {
   fi
 }
 
+installWYay() {
+  local package="$1"
+  if ! [ -x "$(command -v $package)" ]; then
+    echo INSTALLING $package
+    yay -S --noconfirm $package
+  else
+    echo $package ALREADY INSTALLED
+  fi
+}
+
 function mainDialog() {
   clear
   # setup variables
@@ -73,19 +105,22 @@ function mainDialog() {
   #move to temp folder
   cd $TEMP_DIR
 
+  clearSelection
   askDialog
 
   installGeneralChoice
-
+  installApp1
+  installApp2
+  installDevChoice
   installCodeChoice
-
   installI3Choice
+  installTerminalChoice
 
   rm -rf $TEMP_DIR
 
   echo Purged temp folder
 
-  read  -n 1 -p "Press any key to continue" mainmenuinput
+  read -n 1 -p "Press any key to continue" mainmenuinput
 
   askRestart
 }
