@@ -8,17 +8,19 @@ function askGeneralDialog() {
 
     options=(
         1 "Emacs" off
-        2 "Dustn" off
+        2 "Dustn" on
         3 "Firacode 2" on
         4 "Furacode 2.0.0" on
         5 "Font awesome 5.12.1" on
+        6 "nvim" on
+        7 "volumeicon" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
 }
 
-function clearGeneralDialog(){
-    genealChoices='0';
+function clearGeneralDialog() {
+    genealChoices='0'
 }
 
 function installGeneralChoice() {
@@ -44,12 +46,19 @@ function installGeneralChoice() {
             echo PRE INSTALLING FONTAWESOME
             installFontAwesome
             ;;
+        6)
+            echo PRE INSTALLING NEOVIM
+            installWYay neovim-git nvim
+            ;;
+        7)
+            echo PRE INSTALLING VOLUMEICON
+            installWYay volumeicon
+            ;;
         esac
 
     done
 
 }
-
 
 function installFiraCode() {
     if ! [ "$(fc-list | grep -c 'FiraCode')" -ge 1 ]; then

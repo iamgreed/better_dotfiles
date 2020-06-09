@@ -33,7 +33,7 @@ function installTerminalChoice() {
             ;;
         3)
             echo PRE INSTALLING LSD
-            installLsd
+            installWYay "lsd --devmode" lsd
             ;;
         4)
             echo PRE INSTALLING Bd
@@ -44,15 +44,6 @@ function installTerminalChoice() {
 
     done
 
-}
-
-function installLsd() {
-    if ! [ -x "$(command -v lsd)" ]; then
-        echo INSTALLING LSD
-        sudo snap install lsd --devmode
-    else
-        echo LSD ALREADY INSTALLED
-    fi
 }
 
 function installOhMyZsh() {

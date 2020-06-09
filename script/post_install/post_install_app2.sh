@@ -43,23 +43,12 @@ function installApp2() {
             ;;
         5)
             echo PRE INSTALLING NCPAMIXER
-            installNcpamixer
+            installWYay ncpamixer-git ncpamixer
             ;;
         6)
             echo PRE INSTALLING CALCURSE
             installWYay calcurse
             ;;
         esac
-
     done
-
-}
-
-function installNcpamixer() {
-    if ! [ -x "$(command -v ncpamixer)" ]; then
-        echo INSTALLING NCPAMIXER
-        yay -S --noconfirm ncpamixer-git
-    else
-        echo NCPAMIXER ALREADY INSTALLED
-    fi
 }

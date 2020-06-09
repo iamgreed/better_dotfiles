@@ -30,7 +30,7 @@ function installCodeChoice() {
             ;;
         2)
             echo PRE INSTALL CHROME
-            installChrome
+            installWYay google-chrome google-chrome-stable
             ;;
         3)
             echo PRE INSTALL JETBRAINS_TOOLBOX
@@ -46,11 +46,11 @@ function installCodeChoice() {
             ;;
         6)
             echo PRE INSTALL KUBECTL
-            installKubectl
+            installWYay "kubectl --classic" kubectl
             ;;
         7)
             echo PRE INSTALL SLACK
-            installSlack
+            installWYay "slack --classic" slack
             ;;
         esac
 
@@ -69,15 +69,6 @@ function installVsCode() {
 
 }
 
-function installChrome() {
-    if ! [ -x "$(command -v google-chrome-stable)" ]; then
-        echo INSTALLING CHROME
-        yay -S --noconfirm google-chrome
-    else
-        echo CHROME ALREADY INSTALLED
-    fi
-}
-
 function installJetbrainsToolbox() {
     if ! [ -f ~/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox ]; then
         echo INSTALLING JETBRAINS TOOLBOX
@@ -86,23 +77,5 @@ function installJetbrainsToolbox() {
         ./$JETBRAINS_TOOLBOX/jetbrains-toolbox
     else
         echo JETBRAINS TOOLBOX ALREADY INSTALLED
-    fi
-}
-
-function installKubectl() {
-    if ! [ -x "$(command -v kubectl)" ]; then
-        echo INSTALLING KUBECTL
-        sudo snap install kubectl --classic
-    else
-        echo KUBECTL ALREADY INSTALLED
-    fi
-}
-
-function installSlack() {
-    if ! [ -x "$(command -v slack)" ]; then
-        echo INSTALLING SLACK
-        sudo snap install slack --classic
-    else
-        echo SLACK ALREADY INSTALLED
     fi
 }

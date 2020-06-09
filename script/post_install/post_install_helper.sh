@@ -12,13 +12,15 @@ function askDialog() {
   cmd=(dialog --separate-output --checklist "Please select category:" 22 76 16)
 
   options=(
-    1 "General" on
+    1 "General" off
     2 "App1" off
     3 "App2" off
-    4 "Dev" off
-    5 "Code" off
-    6 "i3" off
-    7 "terminal" off
+    4 "App3" off
+    5 "Dev" off
+    6 "Code" off
+    7 "i3" off
+    8 "terminal" off
+    9 "App4" off
   )
   categories=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
   clear
@@ -35,17 +37,24 @@ function askDialog() {
       askApp2Dialog
       ;;
     4)
-      askDevelopmentDialog
+      askApp3Dialog
       ;;
     5)
-      askCodeDialog
+      askDevelopmentDialog
       ;;
     6)
-      askI3Dialog
+      askCodeDialog
       ;;
     7)
+      askI3Dialog
+      ;;
+    8)
       askTerminalDialog
       ;;
+    9)
+      askApp4Dialog
+      ;;
+
     esac
   done
 }
@@ -54,6 +63,8 @@ clearSelection() {
   clearGeneralDialog
   clearApp1Dialog
   clearApp2Dialog
+  clearApp3Dialog
+  clearApp4Dialog
   clearDevelopmentDialog
   clearCodeDialog
   clearI3Dialog
@@ -86,7 +97,14 @@ function installSnap() {
 
 installWYay() {
   local package="$1"
-  if ! [ -x "$(command -v $package)" ]; then
+
+  if [ -z "$2" ]; then
+    local command="$1"
+  else
+    local command="$2"
+  fi
+
+  if ! [ -x "$(command -v $command)" ]; then
     echo INSTALLING $package
     yay -S --noconfirm $package
   else
@@ -111,6 +129,8 @@ function mainDialog() {
   installGeneralChoice
   installApp1
   installApp2
+  installApp3
+  installApp4
   installDevChoice
   installCodeChoice
   installI3Choice

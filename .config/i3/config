@@ -57,18 +57,17 @@ bindsym $altMod+Ctrl+Shift+3 exec $myTerm -e cmus
 bindsym $altMod+Ctrl+Shift+4 exec $myTerm -e youtube-viewer
 bindsym $altMod+Ctrl+Shift+5 exec $myTerm -e ncpamixer
 bindsym $altMod+Ctrl+Shift+6 exec $myTerm -e calcurse
-bindsym $altMod+Ctrl+Shift+7 exec $myTerm -e vim /home/dt/.i3/config
+bindsym $altMod+Ctrl+Shift+7 exec $myTerm -e nvim /home/edar/.config/i3/config
 
-# Apps Launched with <SUPER> + <CTRL> + <KEYPAD 1-9>
-bindsym $mod+Ctrl+KP_End exec $myTerm -e htop
-bindsym $mod+Ctrl+KP_Down exec $myTerm -e gtop
-bindsym $mod+Ctrl+KP_Page_Down exec $myTerm -e nmon
-bindsym $mod+Ctrl+KP_Left exec $myTerm -e glances
-bindsym $mod+Ctrl+KP_Begin exec $myTerm -e s-tui
-bindsym $mod+Ctrl+KP_Right exec $myTerm -e httping -KY --draw-phase localhost
-bindsym $mod+Ctrl+KP_Home exec $myTerm -e cmatrix -C cyan
-bindsym $mod+Ctrl+KP_Up exec $myTerm -e pianobar
-bindsym $mod+Ctrl+KP_Page_Up exec $myTerm -e wopr report.xml
+# Apps Launched with <HYPER> + <1-9>
+bindsym $mod+$altMod+Ctrl+Shift+1 exec $myTerm -e htop
+bindsym $mod+$altMod+Ctrl+Shift+2 exec $myTerm -e gtop
+bindsym $mod+$altMod+Ctrl+Shift+3 exec $myTerm -e nmon
+bindsym $mod+$altMod+Ctrl+Shift+4 exec $myTerm -e glances
+bindsym $mod+$altMod+Ctrl+Shift+5 exec $myTerm -e s-tui
+bindsym $mod+$altMod+Ctrl+Shift+6 exec $myTerm -e httping -KY --draw-phase localhost
+bindsym $mod+$altMod+Ctrl+Shift+7 exec $myTerm -e cmatrix -C cyan
+bindsym $mod+$altMod+Ctrl+Shift+8 exec $myTerm -e wopr report.xml
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -87,9 +86,6 @@ exec --no-startup-id volumeicon
 # Start Applications
 bindsym $mod+Ctrl+b exec $myTerm -e 'bmenu'
 bindsym $mod+F1 exec firefox
-bindsym $mod+F2 exec obs
-bindsym $mod+F3 exec kdenlive
-bindsym $mod+F5 exec $myTerm -e 'mocp'
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
