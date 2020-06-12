@@ -1,7 +1,3 @@
-FIRACODE_VERSION=2
-FONTAWESOME_VERSION=5.12.1
-NERDFONT_VERSION=2.0.0
-
 function askTerminalDialog() {
     # dialog menu
     cmd=(dialog --separate-output --checklist "Please select terminal related stuff to be installed:" 22 76 16)

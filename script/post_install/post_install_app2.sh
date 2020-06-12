@@ -1,7 +1,3 @@
-FIRACODE_VERSION=2
-FONTAWESOME_VERSION=5.12.1
-NERDFONT_VERSION=2.0.0
-
 function askApp2Dialog() {
     # dialog menu
     cmd=(dialog --separate-output --checklist "Please select app 2 to be installed:" 22 76 16)

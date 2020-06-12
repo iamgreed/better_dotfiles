@@ -3,18 +3,20 @@ function askI3Dialog() {
     cmd=(dialog --separate-output --checklist "Please select i3 package to be installed:" 22 76 16)
 
     options=(
-        1 "i3" off
+        1 "i3" on
         2 "i3 lock" off
         3 "scrot" off
-        4 "picom" off
+        4 "picom" on
         5 "conky" off
-        6 "polybar" off
-        7 "rofi" off
+        6 "polybar" on
+        7 "rofi" on
         8 "rofi greenclip" off
         9 "fhe" off
         10 "i3 battery popup git" off
-        11 "morc_menu" off
+        11 "morc_menu" on
         12 "i3-scrot" on
+        13 "pacman-contrib" off
+        14 "i3exit" on
     )
     i3Choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -74,6 +76,14 @@ function installI3Choice() {
         12)
             echo PRE INSTALL i3-scrot
             installWYay i3-scrot
+            ;;
+        13)
+            echo PRE INSTALL pacman-contrib
+            installWYay pacman-contrib
+            ;;
+        14)
+            echo PRE INSTALL i3exit
+            installWYay i3exit
             ;;
 
         esac

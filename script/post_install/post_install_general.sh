@@ -14,6 +14,10 @@ function askGeneralDialog() {
         5 "Font awesome 5.12.1" on
         6 "nvim" on
         7 "volumeicon" on
+        8 "xorg-xkill" on
+        9 "nitrogen" on
+        10 "oblogout" on
+        11 "octopi" on
     )
     genealChoices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
@@ -27,32 +31,37 @@ function installGeneralChoice() {
     for genealChoice in $genealChoices; do
         case $genealChoice in
         1)
-            echo PRE INSTALLING EMACS
             installEmacs
             ;;
         2)
-            echo PRE INSTALLING DUNST
             installWYay dunst
             ;;
         3)
-            echo PRE INSTALLING FIRACODE
             installFiraCode
             ;;
         4)
-            echo PRE INSTALLING PATCHED FIRACODE
             installFuraCode
             ;;
         5)
-            echo PRE INSTALLING FONTAWESOME
             installFontAwesome
             ;;
         6)
-            echo PRE INSTALLING NEOVIM
             installWYay neovim-git nvim
             ;;
         7)
-            echo PRE INSTALLING VOLUMEICON
             installWYay volumeicon
+            ;;
+        8)
+            installWYay xkill
+            ;;
+        9)
+            installWYay nitrogen
+            ;;
+        10)
+            installWYay oblogout
+            ;;
+        11)
+            installWYay octopi
             ;;
         esac
 

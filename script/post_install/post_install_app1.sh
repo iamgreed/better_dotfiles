@@ -1,7 +1,3 @@
-FIRACODE_VERSION=2
-FONTAWESOME_VERSION=5.12.1
-NERDFONT_VERSION=2.0.0
-
 function askApp1Dialog() {
     # dialog menu
     cmd=(dialog --separate-output --checklist "Please select app keybinding 1 to be installed:" 22 76 16)
@@ -11,13 +7,14 @@ function askApp1Dialog() {
         2 "Rtv" off
         3 "Tuir" on
         4 "neomutt" on
+        5 "scrcpy" on
     )
     a1Choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     clear
 }
 
-function clearApp1Dialog(){
-    a1Choices='0';
+function clearApp1Dialog() {
+    a1Choices='0'
 }
 
 function installApp1() {
@@ -40,6 +37,10 @@ function installApp1() {
             echo PRE INSTALLING NEOMUTT
             installWYay neomutt
             ;;
+        5)
+            installWYay scrcpy
+            ;;
+
         esac
 
     done

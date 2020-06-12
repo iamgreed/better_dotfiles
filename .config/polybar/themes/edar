@@ -1,0 +1,17 @@
+; edar theme ============
+background = #292d3e
+foreground = #c0c5ce
+alert = #bd2c40
+volume-min = #a3be8c
+volume-med = #ebcb8b
+volume-max = #bf616a
+linecolor = #000000
+bordercolor = #000000
+label-mode-foreground = #000
+label-mode-background = #fefefe
+label-focused-underline = #AD69AF
+label-urgent-foreground = #db104e
+module-foreground = #A77AC4 
+module-foreground-alt = #7197E7 
+
+; =======================
